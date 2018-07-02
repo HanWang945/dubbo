@@ -41,7 +41,11 @@ public class DubboNamespaceHandler extends NamespaceHandlerSupport {
 		Version.checkDuplicate(DubboNamespaceHandler.class);
 	}
 
-	public void init() {
+    /**
+     * 定义了每个 <xsd:element /> 对应的 org.springframework.beans.factory.xml.BeanDefinitionParser ，代码如下：
+     */
+    public void init() {
+	    //registerBeanDefinitionParser方法为NamespaceHandlerSupport内的方法用户注册bean定义解析器BeanDefinitionParser
 	    registerBeanDefinitionParser("application", new DubboBeanDefinitionParser(ApplicationConfig.class, true));
         registerBeanDefinitionParser("module", new DubboBeanDefinitionParser(ModuleConfig.class, true));
         registerBeanDefinitionParser("registry", new DubboBeanDefinitionParser(RegistryConfig.class, true));
